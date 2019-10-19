@@ -8,7 +8,7 @@ This file is useful to send mails from the commandline or programmatically witho
 '''
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
-sender_email = "" # Enter sender's email
+username = 'origin@gmail.com'
 receiver_email = " "  # Enter receiver address
 password = " " #Enter sender's pass
 date = time.ctime()
@@ -21,6 +21,6 @@ Current Time/Date: {date}
 --Naam to suna hi hoga."""
 
 context = ssl.create_default_context()
-with smtplib.SMTP_SSL(smtp_server, port) as server:
+with smtplib.SMTP_SSL(smtp_ssl_host, smtp_ssl_port) as server:
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, message)

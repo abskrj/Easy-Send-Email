@@ -1,5 +1,11 @@
 import smtplib, ssl, time
+'''
+This file takes the SMTP Sender Email address, Receiver Email address as inputs and 
+sends a mail with a specific message using GMail as the SMTP server.
 
+This file is useful to send mails from the commandline or programmatically without opening a browser
+
+'''
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
 sender_email = "" # Enter sender's email

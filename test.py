@@ -137,17 +137,15 @@ def Main():
     print('-'*20)
     print('''1 - Send Email
 2 - Setting ''')
-    operator = int(input('Select a operator : '))
-    try:
-        if operator == 1:
-            main.Setting()
-            main.Infromation_email()
-            # main.Add_attachment()
-            main.Send_Email()
+    operator = input('Select a operator : ')
+    if operator == '1':
+        main.Setting()
+        main.Infromation_email()
+        main.Send_Email()
 
-        elif operator == 2 :
-            main.Setting(True)
-            
-    except:
-        print('Erorr : invalid input ')
+    elif operator == '2' :
+        main.Setting(True)
+    else:
+        print('Erorr : invalid input')
+        
 Main()

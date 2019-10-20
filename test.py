@@ -65,10 +65,10 @@ class Interface_CMD_Terminal():
             data.close()
 
     def Infromation_email(self) :#taking information for send email
-        self.receiver_email = input('* Enter Receiver Email : ') #Enter  Receiver Email
+        self.receiver_email = input('\n* Enter Receiver Email : ') #Enter  Receiver Email
         self.subject = input('* Subject : ') #Enter Subject Email
         self.text_message = input('* Text Message :') #Enter Text Message
-        self.path_image = input('Enter path a image ') #Enter Path image 
+        self.path_image = input('Enter path a image : ') #Enter Path image 
     
     def Add_attachment(self,msg, filename):
         if not os.path.isfile(filename):
@@ -132,20 +132,22 @@ class Interface_CMD_Terminal():
             server.sendmail(sender_email, receiver_email, message)
 
 def Main():
-        main = Interface_CMD_Terminal()
-        print('Welcome to Script')
-        print('-'*20)
-        print('''1 - Send Email
+    main = Interface_CMD_Terminal()
+    print('Welcome to Script')
+    print('-'*20)
+    print('''1 - Send Email
 2 - Setting ''')
-        operator = int(input('Select a operator : '))
-
+    operator = int(input('Select a operator : '))
+    try:
         if operator == 1:
             main.Setting()
             main.Infromation_email()
             # main.Add_attachment()
             main.Send_Email()
-            
+
         elif operator == 2 :
             main.Setting(True)
-
+            
+    except:
+        print('Erorr : invalid input ')
 Main()

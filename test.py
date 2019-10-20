@@ -18,12 +18,11 @@ password = "" #Enter sender's pass
 date = time.ctime()
 message = MIMEMultipart()
 text = MIMEText("""\
-Subject: [Web Development Course Reminder]
+Subject: #Subject here.
 
-This message is sent because you have took oath that you will study daily web development. So, start now.
 Current Time/Date: {date}
---Abhishek Raj
---Naam to suna hi hoga.""")
+#Message here.
+""")
 message.attach(text) #attaches text to the email
 img_data = open('', 'rb').read() #Enter image filename
 image = MIMEImage(img_data, name=os.path.basename()) #Enter image filename

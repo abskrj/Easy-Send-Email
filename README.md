@@ -23,6 +23,8 @@ First you need to make a "*fork*" from this repository, this is necessary becaus
 ![repository](imagens/fork.png "repository")
 
 When you've finished your forking you'll be redirected to the page of your fork.
+Then you update your contribution and create a new pull request.
+All pull request and contribution are welcome.
 
 Notice below the name of the repository that it is a "*fork*" of another.
 
@@ -39,7 +41,7 @@ If you don't have git installed you have to instal it, here a good tutorial to d
 
 4. Open a terminal and type:
 ```bash
-$ git clone https://github.com/YOUR-USERNAME/Linux-Email-Automation
+$ git clone https://github.com/USERNAME/Linux-Email-Automation
 ```
 
 5. Go to the directory where you've cloned the repo and starting making your contribution.

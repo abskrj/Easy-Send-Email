@@ -8,7 +8,7 @@ You can send an unlimited number of emails to any number of people without any w
 
 Before you begin, you ensure you have met the following requirements:
 
-* You have installed the latest version of Python3.
+* You have installed the latest version of [Python3](https://www.python.org/downloads/).
 * You have a valid email address to use as the sender's email.
 * SMTP via SSL uses port 465 so ensure this is open.
 

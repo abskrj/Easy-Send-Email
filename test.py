@@ -70,6 +70,7 @@ image = MIMEImage(img_data, name=os.path.basename()) #Enter image filename
 message.attach(image) #attaches image to the email
 
 context = ssl.create_default_context()
-with smtplib.SMTP_SSL(smtp_server, port) as server:
-    server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, message)
+server = smtplib.SMTP_SSL(smtp_server, port)
+server.login(sender_email, password)
+server.sendmail(sender_email, receiver_email, str(message))
+server.quit()

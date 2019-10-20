@@ -1,12 +1,43 @@
-
-
 # Linux-Email-Automation
 
-This script sends emails to a any number of person without any warning messages and limit. The mail send goes in inbox and not in spam.
+This script allows you to send multiple emails directly from the command line without you needing to open a browser.
 
-Usage:
+You can send an unlimited number of emails to any number of people without any warning messages. The sent mail also goes directly into recipients' inboxes and not into spam.
 
+## Prerequisites
 
+Before you begin, you ensure you have met the following requirements:
+
+* You have installed the latest version of Python3.
+* You have a valid email address to use as the sender's email.
+* SMTP via SSL uses port 465 so ensure this is open.
+
+## Configuring the script
+
+The `test.py` script contains the following default settings:
+
+```python
+port = 465
+smtp_server = "smtp.gmail.com"
+sender_email = ""
+receiver_email = ""  
+password = ""
+date = time.ctime()
+message = MIMEMultipart()
+text = MIMEText("""\
+Subject: #Subject here.
+Current Time/Date: {date}
+#Message here.
+""")
+message.attach(text)
+img_data = open('', 'rb').read()
+image = MIMEImage(img_data, name=os.path.basename())
+message.attach(image)
+```
+
+## Using the script
+
+To run the script, open a terminal and run:
 
 ```
 $ python3 test.py
@@ -45,5 +76,3 @@ $ git clone https://github.com/USERNAME/Linux-Email-Automation
 ```
 
 5. Go to the directory where you've cloned the repo and starting making your contribution.
-
-

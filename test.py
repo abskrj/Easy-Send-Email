@@ -43,6 +43,7 @@ def add_attachment(msg, filename):
     mime.add_header('Content-Disposition', 'attachment', filename=filename)
     msg.attach(mime)
 
+
 '''
 This file takes the SMTP Sender Email address, Receiver Email address as inputs and 
 sends a mail with a specific message using GMail as the SMTP server.
@@ -53,16 +54,20 @@ This file is useful to send mails from the commandline or programmatically witho
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
 sender_email = "" # Enter sender's email
-receiver_email = " "  # Enter receiver address
-password = " " #Enter sender's pass
+receiver_email = ""  # Enter receiver address
+password = "" #Enter sender's pass
 date = time.ctime()
-message = """\
-Subject: [Web Development Course Reminder]
+message = MIMEMultipart()
+text = MIMEText("""\
+Subject: #Subject here.
 
-This message is sent because you have took oath that you will study daily web development. So, start now.
 Current Time/Date: {date}
---Abhishek Raj
---Naam to suna hi hoga."""
+#Message here.
+""")
+message.attach(text) #attaches text to the email
+img_data = open('', 'rb').read() #Enter image filename
+image = MIMEImage(img_data, name=os.path.basename()) #Enter image filename
+message.attach(image) #attaches image to the email
 
 context = ssl.create_default_context()
 with smtplib.SMTP_SSL(smtp_server, port) as server:

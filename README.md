@@ -8,7 +8,7 @@ Whenever you have to send an email, you open browser then login into your email 
 
 1. Download it in your pc, **Clone or download**
 
-![clone](imagens/clone.png "clone")(https://github.com/abhishekraj272/Linux-Email-Automation/archive/master.zip)
+![clone](imagens/clone.png "clone")
 
 2. Navigate to the folder where *test.py* is located.
 

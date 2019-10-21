@@ -115,21 +115,18 @@ class Interface_CMD_Terminal():
         password = self.sender_pass
         date = time.ctime()
         message = MIMEMultipart()
-        text = MIMEText("""\
-        Subject: {}
-
-        Current Time/Date: {}
-        {}
-        """.format(self.subject,date,self.text_message))
+        text = MIMEText(f"Subject: {self.subject}\nCurrent Time/Date: {date}\n{self.text_message}")
         message.attach(text) #attaches text to the email
         img_data = open(self.path_image, 'rb').read() #Enter image filename
         image = MIMEImage(img_data, name=os.path.basename(self.path_image)) #Enter image filename
         message.attach(image) #attaches image to the email
 
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(smtp_server, port) as server:
-            server.login(sender_email, password)
-            server.sendmail(sender_email, receiver_email, message)
+        server = smtplib.SMTP_SSL(smtp_server, port)
+        server.ehlo()
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, str(message))
+        server.quit()
 
 def Main():
     main = Interface_CMD_Terminal()

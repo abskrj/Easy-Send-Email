@@ -2,12 +2,17 @@
 
 # Linux-Email-Automation
 
-This script sends emails to a any number of person without any warning messages and limit. The mail send goes in inbox and not in spam.
+Whenever you have to send an email, you open browser then login into your email id?? So, this program just eases your work. You can now send email using your Command Line Interface. Its that easy. Just follow the below steps to know about usage.
 
-Usage:
+## Usage
 
+1.  tDownload it in your pc, **Clone or download**
 
+![clone](imagens/clone.png "clone")
 
+2. Navigate to the folder where *test.py* is located.
+
+3.
 ```
 $ python3 test.py
 ```

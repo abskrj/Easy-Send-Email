@@ -8,10 +8,10 @@ pip3 install --user pyqt5
 
 ## Usage:
 
-
+*For Windows*
+- Open Windows Exe File and run the exe file.
 
 ```
-$ Gui:  python3 Gui-interface.py
 $ Shell: python3 test.py
 ```
 

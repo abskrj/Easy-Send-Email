@@ -2,7 +2,7 @@ import ssl, time
 import mimetypes
 import os
 import smtplib
-
+import argparse    # to make argument parsing more effective and provide you the ability to profide optional arguments
 from email import encoders
 from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
@@ -12,13 +12,13 @@ from email.mime.text import MIMEText
 
 class Interface_CMD_Terminal():
 
-    def __init__(self):
+    def __init__(self,sm,rm):
         #create variables need
-        self.sender_email =None
+        self.sender_email =sm
         self.sender_pass = None
         self.port = 0
         self.smtp = None
-        self.receiver_email = None
+        self.receiver_email = rm
         self.subject = None
         self.text_message = None
         self.path_image = None
@@ -35,7 +35,8 @@ class Interface_CMD_Terminal():
         if rewriting_setting == True:
             os.remove('./.setting.txt') # removing file setting 
             data = open('./.setting.txt','a')
-            data.write(input('* Enter Your Email : ')+'^|^\n') # Write Email + ^|^\n for spilt file 
+            
+            data.write( self.sender_email==None?input('* Enter Your Email : '):self.sender_email+'^|^\n'): # Write Email + ^|^\n for spilt file 
             data.write(input('* Enter Your Password Email : ')+'^|^\n') # Write password + ^|^\n for spilt file 
             data.write(input('Enter a Port [Defult Port : 465 [press Enter to skip]] : ')+'^|^\n') # Write port + ^|^\n for spilt file 
             data.write(input('Enter Smtp server [Defulat Smtp : smtp.gmail.com [press Enter to skip]] : ')+'^|^\n') # Write Smtp + ^|^\n for spilt file 
@@ -65,7 +66,7 @@ class Interface_CMD_Terminal():
             data.close()
 
     def Infromation_email(self) :#taking information for send email
-        self.receiver_email = input('\n* Enter Receiver Email : ') #Enter  Receiver Email
+        self.receiver_email = input('\n* Enter Receiver Email : ') if self.reciever_email==None else self.reciever_email #Enter  Receiver Email
         self.subject = input('* Subject : ') #Enter Subject Email
         self.text_message = input('* Text Message :') #Enter Text Message
         self.path_image = input('Enter path a image : ') #Enter Path image 
@@ -129,11 +130,16 @@ class Interface_CMD_Terminal():
         server.quit()
 
 def Main():
-    main = Interface_CMD_Terminal()
+    ap =  argparse.ArgumentParser()
+    ap.add_argument("-s","--senderMail",help= "Email address of sender")
+    ap.add_argument("-r","--recieverMail",help= "Email address of reciever")   # now you will run script like :
+    args=vars(ap.parse_args())
+    main = Interface_CMD_Terminal(args["senderMail"],args["recieverMail"]) # python test.py -s mail of snder -r mail of reciever
+                                                                          #also python test.py -h gives you information about each argument
     print('Welcome to Script')
     print('-'*20)
     print('''1 - Send Email
-2 - Setting ''')
+     2 - Setting ''')
     operator = input('Select a operator : ')
     if operator == '1':
         main.Setting()

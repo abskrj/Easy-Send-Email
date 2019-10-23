@@ -9,10 +9,11 @@ pip3 install --user pyqt5
 ## Usage:
 
 *For Windows*
-- Open Windows Exe File and run the exe file.
-
+ Open Windows Exe File and run the exe file.
+ > NOTE: NO NEED TO INSTALL ANY PACKAGE FOR RUNNING .exe FILE.
+*For Linux*
 ```
-$ Shell: python3 test.py
+$ python3 test.py
 ```
 
 # How to contribute

@@ -1,6 +1,6 @@
 
 
-# Linux-Email-Automation
+# Easy-Send-Email
 
 This script sends emails to a any number of person without any warning messages and limit. The mail send goes in inbox and not in spam.
 # Installation
@@ -19,7 +19,7 @@ $ Shell: python3 test.py
 
 First you need to make a "*fork*" from this repository, this is necessary because you can't change this repository directly.
 
-1. On Github, navigate to [abhishekraj272/Linux-Email-Automation](https://github.com/abhishekraj272/Linux-Email-Automation)
+1. On Github, navigate to [abhishekraj272/Easy-Send-Email](https://github.com/abhishekraj272/Easy-Send-Email)
 
 2. In the top-right corner of the page, click **Fork**.
 
@@ -44,7 +44,7 @@ If you don't have git installed you have to instal it, here a good tutorial to d
 
 4. Open a terminal and type:
 ```bash
-$ git clone https://github.com/USERNAME/Linux-Email-Automation
+$ git clone https://github.com/USERNAME/Easy-Send-Email
 ```
 
 5. Go to the directory where you've cloned the repo and starting making your contribution.

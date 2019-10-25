@@ -18,10 +18,11 @@ class Interface_CMD_Terminal():
         self.sender_pass = None
         self.port = 0
         self.smtp = None
-        self.receiver_email = rm
+        self.receiver_email = None
         self.subject = None
         self.text_message = None
         self.path_image = None
+        self.image = False
 
     def Setting(self,rewriting_setting = False): # taking data for send a email |Email - password - port - smtp server 
         try:
@@ -36,7 +37,7 @@ class Interface_CMD_Terminal():
             os.remove('./.setting.txt') # removing file setting 
             data = open('./.setting.txt','a')
             
-            data.write( self.sender_email==None?input('* Enter Your Email : '):self.sender_email+'^|^\n'): # Write Email + ^|^\n for spilt file 
+            data.write(input('* Enter Your Email : ') if self.sender_email==None else self.sender_email+'^|^\n') # Write Email + ^|^\n for spilt file 
             data.write(input('* Enter Your Password Email : ')+'^|^\n') # Write password + ^|^\n for spilt file 
             data.write(input('Enter a Port [Defult Port : 465 [press Enter to skip]] : ')+'^|^\n') # Write port + ^|^\n for spilt file 
             data.write(input('Enter Smtp server [Defulat Smtp : smtp.gmail.com [press Enter to skip]] : ')+'^|^\n') # Write Smtp + ^|^\n for spilt file 
@@ -51,10 +52,10 @@ class Interface_CMD_Terminal():
             self.sender_pass = data_setting[1]  # Password Email Sender Index
             # print(self.sender_pass) #check value
 
-            self.port = int(data_setting[3]) if len(data_setting[3]) >=1 else 465 #Check Port Index
+            self.port = int(data_setting[2]) if len(data_setting[2]) >=3 else 465 #Check Port Index
             # print(self.port) #check value
 
-            self.smtp = data_setting[4] if len(data_setting[4]) >=10 else 'smtp.gmail.com' # check for smtp server 
+            self.smtp = data_setting[3] if len(data_setting[3]) >=10 else 'smtp.gmail.com' # check for smtp server 
             # print(self.smtp) #check value
             
         else:
@@ -65,11 +66,17 @@ class Interface_CMD_Terminal():
             data.write(input('Enter Smtp server [Defulat Smtp : smtp.gmail.com [press Enter to skip] ] : ')+'^|^\n') # Write smtp + ^|^\n for spilt file 
             data.close()
 
-    def Infromation_email(self) :#taking information for send email
-        self.receiver_email = input('\n* Enter Receiver Email : ') if self.reciever_email==None else self.reciever_email #Enter  Receiver Email
+    def Information_email(self) :#taking information for send email
+        self.receiver_email = input('\n* Enter Receiver Email : ') if self.receiver_email==None else self.receiver_email #Enter  Receiver Email
         self.subject = input('* Subject : ') #Enter Subject Email
         self.text_message = input('* Text Message :') #Enter Text Message
-        self.path_image = input('Enter path a image : ') #Enter Path image 
+        optional_image = input('* Do you want to add an image? [y/n]:')
+        if optional_image == 'y':
+            self.image = True
+        else:
+            self.image = False
+        if self.image == True:
+            self.path_image = input('Enter path a image : ') #Enter Path image 
     
     def Add_attachment(self,msg, filename):
         if not os.path.isfile(filename):
@@ -116,12 +123,15 @@ class Interface_CMD_Terminal():
         password = self.sender_pass
         date = time.ctime()
         message = MIMEMultipart()
-        text = MIMEText(f"Subject: {self.subject}\nCurrent Time/Date: {date}\n{self.text_message}")
+        message['From'] = self.sender_email
+        message['To'] = self.receiver_email
+        message['Subject'] = self.subject
+        text = MIMEText(f"{self.text_message}")
         message.attach(text) #attaches text to the email
-        img_data = open(self.path_image, 'rb').read() #Enter image filename
-        image = MIMEImage(img_data, name=os.path.basename(self.path_image)) #Enter image filename
-        message.attach(image) #attaches image to the email
-
+        if self.image == True:
+            img_data = open(self.path_image, 'rb').read() #Enter image filename
+            image = MIMEImage(img_data, name=os.path.basename(self.path_image)) #Enter image filename
+            message.attach(image) #attaches image to the email
         context = ssl.create_default_context()
         server = smtplib.SMTP_SSL(smtp_server, port)
         server.ehlo()
@@ -143,7 +153,7 @@ def Main():
     operator = input('Select a operator : ')
     if operator == '1':
         main.Setting()
-        main.Infromation_email()
+        main.Information_email()
         main.Send_Email()
 
     elif operator == '2' :

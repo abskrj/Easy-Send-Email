@@ -36,7 +36,7 @@ Notice below the name of the repository that it is a "*fork*" of another.
 ## Making your change
 
 1. Set up Git
-If you don't have git installed you have to instal it, here a good tutorial to do it: [Instaling git](https://help.github.com/en/articles/set-up-git)
+If you don't have git installed you have to instal it, here a good tutorial to do it: [Installing git](https://help.github.com/en/articles/set-up-git)
 
 2. To make a change you need to clone your repository, to clone your repository click on the button, **Clone or download**
 

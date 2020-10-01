@@ -2,8 +2,9 @@
 
 # Easy-Send-Email
 
-This script sends emails to a any number of person without any warning messages and limit. The mail send goes in inbox and not in spam.
-# Installation
+A python based email client for sending secure emails.
+
+## Installation
 pip3 install --user pyqt5  
 
 ## Usage:
@@ -19,7 +20,7 @@ pip3 install -r requirements.txt
 python3 test.py
 ```
 
-# How to contribute
+## How to contribute
 
 First you need to make a "*fork*" from this repository, this is necessary because you can't change this repository directly.
 

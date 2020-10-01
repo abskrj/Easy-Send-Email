@@ -2,7 +2,7 @@
 
 # Easy-Send-Email
 
-A python based email client for sending secure emails.
+A python based email client(CLI & GUI) for sending secure emails.
 
 ## Installation
 pip3 install --user pyqt5  
